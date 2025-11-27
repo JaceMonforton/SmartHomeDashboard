@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card } from "antd";
 import { Thermometer, Plus, Minus } from "lucide-react";
 

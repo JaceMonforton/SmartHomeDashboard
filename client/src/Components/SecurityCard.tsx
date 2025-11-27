@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, Switch } from "antd";
 import { Lock, Unlock } from "lucide-react";
 

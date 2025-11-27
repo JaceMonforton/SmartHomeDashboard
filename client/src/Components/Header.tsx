@@ -1,4 +1,3 @@
-import React from "react";
 import { Home, Settings } from "lucide-react";
 import { Select } from "antd";
 

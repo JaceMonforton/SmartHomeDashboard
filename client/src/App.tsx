@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Layout, Row, Col, Modal } from "antd";
+import { useState } from "react";
+import { Layout, Row, Col } from "antd";
 import { Header } from "./Components/Header";
 import { MusicCard } from "./Components/MusicCard";
 import { TemperatureCard } from "./Components/TemperatureCaed";
@@ -11,7 +11,6 @@ const { Content } = Layout;
 
 export default function App() {
   const [currentRoom, setCurrentRoom] = useState("Living Room");
-  const [showSettings, setShowSettings] = useState(false);
 
   const rooms = [
     "Living Room",
@@ -41,7 +40,7 @@ document.body.style.height = "100%";
         currentRoom={currentRoom}
         rooms={rooms}
         onRoomChange={setCurrentRoom}
-        onSettingsClick={() => setShowSettings(true)}
+        onSettingsClick={() => console.log("Clicked")}
       />
 
       

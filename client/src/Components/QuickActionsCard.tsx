@@ -1,4 +1,3 @@
-import React from "react";
 import { Coffee, Tv, Wind, Droplets } from "lucide-react";
 import { Card } from "antd";
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Lightbulb, Sun } from "lucide-react";
 import { Switch, Slider, Card } from "antd";
 
