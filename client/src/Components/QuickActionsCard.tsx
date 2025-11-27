@@ -69,6 +69,12 @@ export function QuickActionsCard() {
               e.currentTarget.style.transform = "scale(1)";
               e.currentTarget.style.border = "1px solid rgba(51,65,85,0.3)";
             }}
+            onMouseDown={(e) => {
+              e.currentTarget.style.transform = "scale(0.8)";
+            }}
+            onMouseUp={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
           >
             {/* Icon Gradient Box */}
             <div
