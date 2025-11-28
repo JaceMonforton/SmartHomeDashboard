@@ -1,29 +1,30 @@
 import { useState } from "react";
-import { Layout, Row, Col } from "antd";
+import { Layout } from "antd";
 import { Header } from "./Components/Header";
-import { MusicCard } from "./Components/MusicCard";
-import { TemperatureCard } from "./Components/TemperatureCaed";
-import { LightingCard } from "./Components/LightingCard";
-import { SecurityCard } from "./Components/SecurityCard";
-import { QuickActionsCard } from "./Components/QuickActionsCard";
 
 import { LivingRoomLayout } from "./RoomLayouts/LivingRoomLayout";
 import { BedroomLayout } from "./RoomLayouts/BedroomLayout";
+import { KitchenLayout } from "./RoomLayouts/KitchenLayout";
+import { BathroomLayout } from "./RoomLayouts/BathroomLayout";
 
 const { Content } = Layout;
 
 export default function App() {
-  type RoomName = "Living Room" | "Bedroom";
+  type RoomName = "Living Room" | "Bedroom" | "Kitchen" | "Bathroom";
 
 const rooms: RoomName[] = [
   "Living Room",
   "Bedroom",
+  "Kitchen",
+  "Bathroom",
 
 ];
 
 const roomLayouts: Record<RoomName, React.ReactNode> = {
   "Living Room": <LivingRoomLayout />,
   "Bedroom": <BedroomLayout />,
+  "Kitchen": <KitchenLayout />,
+  "Bathroom": <BathroomLayout />,
 };
 
 const [currentRoom, setCurrentRoom] = useState<RoomName>("Living Room");
@@ -58,6 +59,7 @@ document.body.style.height = "100%";
       style={{
         width: "100%",
         margin: "0 auto",
+        marginTop: 16,
         padding: "0",           // remove default white padding
         background: "transparent", // remove white background
       }}
@@ -76,7 +78,6 @@ document.body.style.height = "100%";
           onMouseEnter={(e) => (e.currentTarget.style.color = "#e2e8f0")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
-          Feature Request
         </div>
       </Content>
 

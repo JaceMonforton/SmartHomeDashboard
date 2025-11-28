@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Card } from "antd";
 import { Thermometer, Plus, Minus } from "lucide-react";
 
+import { HoldButton } from "./HoldButton";
+
 export function TemperatureCard() {
   const [temperature, setTemperature] = useState(22);
   const targetTemp = 24;
 
   const increaseTemp = () => setTemperature((prev) => Math.min(prev + 1, 30));
-  const decreaseTemp = () => setTemperature((prev) => Math.max(prev - 1, 16));
+  const decreaseTemp = () => setTemperature((prev) => Math.max(prev - 1, 0));
 
   return (
     <Card
@@ -45,7 +47,7 @@ export function TemperatureCard() {
         </div>
 
         <div>
-          <h3 style={{ color: "white", margin: 0 }}>Temperature</h3>
+          <h3 id="temp" style={{ color: "white", margin: 0 }}>Temperature</h3>
           <p style={{ color: "#94a3b8", fontSize: 14, margin: 0 }}>
             Control Panel
           </p>
@@ -134,8 +136,8 @@ export function TemperatureCard() {
         }}
       >
         {/* Decrease */}
-        <button
-          onClick={decreaseTemp}
+        <HoldButton
+          onHold={decreaseTemp}
           style={{
             width: 48,
             height: 48,
@@ -146,17 +148,19 @@ export function TemperatureCard() {
             cursor: "pointer",
             transition: "0.2s",
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(51,65,85,0.7)",
-            e.currentTarget.style.transform = "scale(1.05)")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(51,65,85,0.5)",
-            e.currentTarget.style.transform = "scale(1.00)")
-          }
+          onMouseOver={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.currentTarget.style.background = "rgba(51,65,85,0.7)";
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+
+          onMouseOut={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.currentTarget.style.background = "rgba(51,65,85,0.5)";
+            e.currentTarget.style.transform = "scale(1.00)";
+          }}
         >
           <Minus style={{ width: 20, height: 20 }} />
-        </button>
+        </HoldButton>
+
 
         {/* Target Temp */}
         <div style={{ textAlign: "center" }}>
@@ -165,8 +169,8 @@ export function TemperatureCard() {
         </div>
 
         {/* Increase */}
-        <button
-          onClick={increaseTemp}
+        <HoldButton
+          onHold={increaseTemp}
           style={{
             width: 48,
             height: 48,
@@ -178,18 +182,21 @@ export function TemperatureCard() {
             transition: "0.2s",
             boxShadow: "0 0 12px rgba(249,115,22,0.4)",
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.background = "linear-gradient(to right, #ea580c, #dc2626)",
-            e.currentTarget.style.transform = "scale(1.05)")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.background =
-              "linear-gradient(to right, #f97316, #ef4444)",
-            e.currentTarget.style.transform = "scale(1.00)")
-          }
+          onMouseOver={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.currentTarget.style.background =
+              "linear-gradient(to right, #ea580c, #dc2626)";
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+
+          onMouseOut={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.currentTarget.style.background =
+              "linear-gradient(to right, #f97316, #ef4444)";
+            e.currentTarget.style.transform = "scale(1.00)";
+          }}
         >
           <Plus style={{ width: 20, height: 20 }} />
-        </button>
+        </HoldButton>
+
       </div>
     </Card>
   );
