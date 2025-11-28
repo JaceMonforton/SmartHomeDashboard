@@ -6,6 +6,7 @@ import {
   SkipBack,
   SkipForward,
   Volume2,
+  VolumeOff,
 } from "lucide-react";
 import { Slider, Card } from "antd";
 
@@ -141,6 +142,13 @@ export function MusicCard() {
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "rgba(51,65,85,0.5)";
             e.currentTarget.style.color = "#cbd5e1";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.8)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
           <SkipBack size={20} />
@@ -170,6 +178,13 @@ export function MusicCard() {
           onMouseLeave={(e) => {
             e.currentTarget.style.background =
               "linear-gradient(to right, #3b82f6, #8b5cf6)";
+              e.currentTarget.style.transform = "scale(1)";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.8)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
           {isPlaying ? (
@@ -201,6 +216,13 @@ export function MusicCard() {
           onMouseLeave={(e) => {
             e.currentTarget.style.background = "rgba(51,65,85,0.5)";
             e.currentTarget.style.color = "#cbd5e1";
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          onMouseDown={(e) => {
+            e.currentTarget.style.transform = "scale(0.8)";
+          }}
+          onMouseUp={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
           }}
         >
           <SkipForward size={20} />
@@ -209,7 +231,11 @@ export function MusicCard() {
 
       {/* Volume Control */}
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <Volume2 size={20} color="#94a3b8" />
+        {volume == 0 ? (
+            <VolumeOff size={20} color="#94a3b8" />
+          ) : (
+            <Volume2 size={20} color="#94a3b8" />
+          )}
 
         <Slider
           value={volume}

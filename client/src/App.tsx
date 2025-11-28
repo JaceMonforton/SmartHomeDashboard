@@ -7,19 +7,27 @@ import { LightingCard } from "./Components/LightingCard";
 import { SecurityCard } from "./Components/SecurityCard";
 import { QuickActionsCard } from "./Components/QuickActionsCard";
 
+import { LivingRoomLayout } from "./RoomLayouts/LivingRoomLayout";
+import { BedroomLayout } from "./RoomLayouts/BedroomLayout";
+
 const { Content } = Layout;
 
 export default function App() {
-  const [currentRoom, setCurrentRoom] = useState("Living Room");
+  type RoomName = "Living Room" | "Bedroom";
 
-  const rooms = [
-    "Living Room",
-    "Bedroom",
-    "Kitchen",
-    "Bathroom",
-    "Office",
-    "Garage",
-  ];
+const rooms: RoomName[] = [
+  "Living Room",
+  "Bedroom",
+
+];
+
+const roomLayouts: Record<RoomName, React.ReactNode> = {
+  "Living Room": <LivingRoomLayout />,
+  "Bedroom": <BedroomLayout />,
+};
+
+const [currentRoom, setCurrentRoom] = useState<RoomName>("Living Room");
+
 
 document.body.style.margin = "0";
 document.body.style.padding = "0";
@@ -39,7 +47,7 @@ document.body.style.height = "100%";
       <Header
         currentRoom={currentRoom}
         rooms={rooms}
-        onRoomChange={setCurrentRoom}
+        onRoomChange={(room: string) => setCurrentRoom(room as RoomName)}
         onSettingsClick={() => console.log("Clicked")}
       />
 
@@ -49,34 +57,13 @@ document.body.style.height = "100%";
     <Content
       style={{
         width: "100%",
-        maxWidth: 1280,
         margin: "0 auto",
         padding: "0",           // remove default white padding
         background: "transparent", // remove white background
       }}
     >
-        <Row gutter={[24, 24]}>
-          <Col xs={24} md={12} lg={16}>
-            <MusicCard />
-          </Col>
-
-          <Col xs={24} md={12} lg={8}>
-            <TemperatureCard />
-          </Col>
-
-          <Col xs={24} md={12} lg={8}>
-            <LightingCard />
-          </Col>
-
-          <Col xs={24} md={12} lg={8}>
-            <QuickActionsCard />
-          </Col>
-
-          <Col xs={24} md={12} lg={8}>
-            <SecurityCard />
-          </Col>
-        </Row>
-
+        {roomLayouts[currentRoom]}
+        
         <div
           style={{
             marginTop: 32,

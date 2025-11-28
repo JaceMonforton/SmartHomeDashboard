@@ -147,10 +147,12 @@ export function TemperatureCard() {
             transition: "0.2s",
           }}
           onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(51,65,85,0.7)")
+            (e.currentTarget.style.background = "rgba(51,65,85,0.7)",
+            e.currentTarget.style.transform = "scale(1.05)")
           }
           onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(51,65,85,0.5)")
+            (e.currentTarget.style.background = "rgba(51,65,85,0.5)",
+            e.currentTarget.style.transform = "scale(1.00)")
           }
         >
           <Minus style={{ width: 20, height: 20 }} />
@@ -177,12 +179,13 @@ export function TemperatureCard() {
             boxShadow: "0 0 12px rgba(249,115,22,0.4)",
           }}
           onMouseOver={(e) =>
-            (e.currentTarget.style.background =
-              "linear-gradient(to right, #ea580c, #dc2626)")
+            (e.currentTarget.style.background = "linear-gradient(to right, #ea580c, #dc2626)",
+            e.currentTarget.style.transform = "scale(1.05)")
           }
           onMouseOut={(e) =>
             (e.currentTarget.style.background =
-              "linear-gradient(to right, #f97316, #ef4444)")
+              "linear-gradient(to right, #f97316, #ef4444)",
+            e.currentTarget.style.transform = "scale(1.00)")
           }
         >
           <Plus style={{ width: 20, height: 20 }} />
